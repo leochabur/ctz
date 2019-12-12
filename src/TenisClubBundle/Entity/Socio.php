@@ -1,0 +1,293 @@
+<?php
+
+namespace TenisClubBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Socio
+ *
+ * @ORM\Table(name="socio")
+ * @ORM\Entity(repositoryClass="TenisClubBundle\Repository\SocioRepository")
+ */
+class Socio
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellido", type="string", length=255)
+     */
+    private $apellido;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=255)
+     */
+    private $mail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=255)
+     */
+    private $direccion;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="numero", type="integer", unique=true)
+     */
+    private $numero;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="documento", type="string", length=255, nullable=true)
+     */
+    private $documento;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="fecha_nacimiento", type="date")
+     */
+    private $fechaNac;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Categoria") 
+    * @ORM\JoinColumn(name="id_categoria", referencedColumnName="id")
+    */      
+    private $categoria;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="LugarPago") 
+    * @ORM\JoinColumn(name="id_lugar_pago", referencedColumnName="id")
+    */      
+    private $lugarPago;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="EntidadGF") 
+    * @ORM\JoinColumn(name="id_gf", referencedColumnName="id")
+    */      
+    private $gf;
+    
+    
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set apellido
+     *
+     * @param string $apellido
+     *
+     * @return Socio
+     */
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    /**
+     * Get apellido
+     *
+     * @return string
+     */
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return Socio
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     *
+     * @return Socio
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     *
+     * @return Socio
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     *
+     * @return Socio
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return int
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set documento
+     *
+     * @param string $documento
+     *
+     * @return Socio
+     */
+    public function setDocumento($documento)
+    {
+        $this->documento = $documento;
+
+        return $this;
+    }
+
+    /**
+     * Get documento
+     *
+     * @return string
+     */
+    public function getDocumento()
+    {
+        return $this->documento;
+    }
+
+    /**
+     * Set fechaNac
+     *
+     * @param \DateTime $fechaNac
+     *
+     * @return Socio
+     */
+    public function setFechaNac($fechaNac)
+    {
+        $this->fechaNac = $fechaNac;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaNac
+     *
+     * @return \DateTime
+     */
+    public function getFechaNac()
+    {
+        return $this->fechaNac;
+    }
+
+    /**
+     * Set categoria
+     *
+     * @param \TenisClubBundle\Entity\Categoria $categoria
+     *
+     * @return Socio
+     */
+    public function setCategoria(\TenisClubBundle\Entity\Categoria $categoria = null)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \TenisClubBundle\Entity\Categoria
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+}
